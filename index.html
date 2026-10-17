@@ -41,6 +41,12 @@
     .nav-links { display: flex; gap: 2rem; list-style: none; }
     .nav-links a { text-decoration: none; color: var(--slate); font-weight: 500; font-size: 0.95rem; transition: color 0.2s; }
     .nav-links a:hover { color: var(--teal); }
+    .has-sub { position: relative; padding-bottom: 1rem; margin-bottom: -1rem; }
+    .has-sub > a::after { content: "\25BE"; font-size: 0.75em; margin-left: 0.3rem; }
+    .sub-menu { display: none; position: absolute; top: calc(100% - 0.2rem); left: -1rem; min-width: 210px; list-style: none; background: var(--white); border: 1px solid rgba(0,0,0,0.06); border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.1); padding: 0.5rem; }
+    .has-sub:hover .sub-menu, .has-sub:focus-within .sub-menu { display: block; }
+    .sub-menu a { display: block; padding: 0.6rem 1rem; border-radius: 8px; white-space: nowrap; }
+    .sub-menu a:hover { background: var(--teal-light); color: var(--teal-dark); }
     .nav-cta { background: var(--teal); color: var(--white) !important; padding: 0.5rem 1.4rem; border-radius: 50px; font-weight: 600 !important; transition: background 0.2s; }
     .nav-cta:hover { background: var(--teal-dark); color: var(--white); }
     .hamburger { display: none; background: none; border: none; cursor: pointer; }
@@ -181,6 +187,9 @@
       .nav-links { display: none; }
       .hamburger { display: block; }
       .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: var(--white); padding: 1.5rem 2rem; gap: 1.2rem; border-bottom: 1px solid rgba(0,0,0,0.06); }
+      .has-sub { padding-bottom: 0; margin-bottom: 0; }
+      .sub-menu { display: block; position: static; box-shadow: none; border: none; padding: 0.4rem 0 0 1rem; min-width: 0; }
+      .sub-menu a { padding: 0.4rem 0; }
       .about-grid { grid-template-columns: 1fr; }
       .doctors-grid { grid-template-columns: 1fr; }
       .hero-stats { gap: 2rem; }
@@ -210,6 +219,13 @@
   <div class="nav-inner">
     <a href="#" class="logo">Sisters<span>Rx</span></a>
     <ul class="nav-links" id="navLinks">
+      <li class="has-sub">
+        <a href="#corporate" aria-haspopup="true">Consultant</a>
+        <ul class="sub-menu">
+          <li><a href="#corporate">Corporate</a></li>
+          <li><a href="#coaching">Individual Coaching</a></li>
+        </ul>
+      </li>
       <li><a href="#about">About</a></li>
       <li><a href="#doctors">The Doctors</a></li>
       <li><a href="#topics">Topics</a></li>
@@ -236,6 +252,38 @@
         Watch on YouTube
       </a>
       <a href="#topics" class="btn btn-secondary">Explore Topics</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONSULTANT: CORPORATE -->
+<section id="corporate" style="background: var(--light);">
+  <div class="container">
+    <p class="section-label">Consultant &middot; Corporate</p>
+    <h2 class="section-title">Medical Expertise, Amplified by AI</h2>
+    <p class="section-sub">We are a team of expert medical consultants leveraging artificial intelligence (AI) and healthcare expertise to help private-sector healthcare organizations optimize operational efficiency, streamline workflows, enhance productivity, and improve overall organizational performance through innovative, data-driven solutions.</p>
+    <div class="topics-grid" style="grid-template-columns:repeat(auto-fit,minmax(230px,1fr));">
+      <div class="topic-card"><div class="topic-icon">&#x2699;&#xFE0F;</div><h3>Operational Efficiency</h3><p>Identify bottlenecks and reduce friction across clinical and administrative operations.</p></div>
+      <div class="topic-card"><div class="topic-icon">&#x1F501;</div><h3>Streamlined Workflows</h3><p>Redesign processes and introduce AI-assisted tools that fit the way your teams actually work.</p></div>
+      <div class="topic-card"><div class="topic-icon">&#x1F4C8;</div><h3>Enhanced Productivity</h3><p>Free clinicians and staff from repetitive tasks so their time goes where it matters most.</p></div>
+      <div class="topic-card"><div class="topic-icon">&#x1F3AF;</div><h3>Organizational Performance</h3><p>Use data-driven insights to measure what works and keep improving.</p></div>
+    </div>
+    <div style="text-align:center; margin-top:2.5rem;">
+      <a href="mailto:sistersrxadmin@gmail.com?subject=Consulting%20Inquiry%20—%20SistersRx" class="btn btn-secondary">Start a Conversation</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONSULTANT: INDIVIDUAL COACHING -->
+<section id="coaching">
+  <div class="container">
+    <p class="section-label">Consultant &middot; Individual Coaching</p>
+    <h2 class="section-title">Lead with Confidence, Resilience, and Purpose</h2>
+    <p class="section-sub" style="max-width:760px; margin-bottom:1.2rem;">We empower leaders across industries to overcome barriers, motivate teams, navigate challenging work environments, and become more effective, confident leaders. Our advice is grounded in the real-world experience of two board-certified surgeons trained to lead and perform under pressure in high-stakes, high-risk environments.</p>
+    <p class="section-sub" style="max-width:760px; font-weight:600; color:var(--navy);">Think of us as your big sisters in leadership&mdash;bringing expert insight, honest advice, and proven strategies to help you lead with confidence, resilience, and purpose.</p>
+    <div style="text-align:center; margin-top:2.5rem;">
+      <a href="mailto:sistersrxadmin@gmail.com?subject=Individual%20Coaching%20Inquiry%20—%20SistersRx" class="btn btn-secondary">Inquire About Coaching</a>
+      <p style="font-size:0.85rem; color:var(--slate); margin-top:1rem;">Coaching is educational and is not medical care or medical advice.</p>
     </div>
   </div>
 </section>
@@ -467,7 +515,7 @@
     </div>
     <div class="footer-col"><h4>Content</h4><ul><li><a href="#topics">All Topics</a></li><li><a href="#videos">Latest Videos</a></li><li><a href="https://www.youtube.com/@sistersrx/playlists" target="_blank">Playlists</a></li><li><a href="https://www.youtube.com/@sistersrx/shorts" target="_blank">Shorts</a></li></ul></div>
     <div class="footer-col"><h4>Community</h4><ul><li><a href="#newsletter">Newsletter</a></li><li><a href="https://www.youtube.com/@sistersrx" target="_blank">YouTube Channel</a></li><li><a href="https://www.instagram.com/sistersrx" target="_blank">Instagram</a></li><li><a href="https://www.tiktok.com/@sistersrx" target="_blank">TikTok</a></li></ul></div>
-    <div class="footer-col"><h4>Connect</h4><ul><li><a href="mailto:sistersrxadmin@gmail.com">Contact Us</a></li><li><a href="#collab">Work With Us</a></li><li><a href="#collab">Brand Collabs</a></li></ul></div>
+    <div class="footer-col"><h4>Connect</h4><ul><li><a href="mailto:sistersrxadmin@gmail.com">Contact Us</a></li><li><a href="#corporate">Consultant: Corporate</a></li><li><a href="#coaching">Individual Coaching</a></li><li><a href="#collab">Work With Us</a></li><li><a href="#collab">Brand Collabs</a></li></ul></div>
   </div>
   <div class="footer-bottom">
     <span>&copy; 2026 SistersRx. All rights reserved. For educational purposes only — not medical advice. Always consult your physician about your individual care.</span>
